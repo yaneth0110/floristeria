@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+  Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+
+
+
+<ui:composition template="/resources/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:define name="title">Flores</ui:define>
+
+  <ui:define name="content">
+    <h2>Listado de Flores</h2>
+
+    <p:commandButton value="Nuevo"
+                     icon="pi pi-plus"
+                     action="#{florBean.prepararNuevo}"
+                     process="@this"
+                     update=":mainForm:dlgFlor"
+                     oncomplete="PF('wvDlgFlor').show()" />
+
+    <p:dataTable id="tblFlores"
+                 value="#{florBean.flores}"
+                 var="f"
+                 paginator="true"
+                 rows="10"
+                 rowKey="#{f.id}"
+                 emptyMessage="No hay flores registradas">
+
+      <p:column headerText="ID">
+        #{f.id}
+      </p:column>
+
+      <p:column headerText="Nombre">
+        #{f.nombre}
+      </p:column>
+
+      <p:column headerText="Color">
+        #{f.color}
+      </p:column>
+
+      <p:column headerText="Precio">
+        #{f.precio}
+      </p:column>
+
+      <p:column headerText="Stock">
+        #{f.stock}
+      </p:column>
+
+      <p:column headerText="Acciones" style="width:150px">
+        <p:commandButton icon="pi pi-pencil"
+                         title="Editar"
+                         action="#{florBean.editar(f)}"
+                         process="@this"
+                         update=":mainForm:dlgFlor"
+                         oncomplete="PF('wvDlgFlor').show()" />
+
+        <p:commandButton icon="pi pi-trash"
+                         title="Eliminar"
+                         action="#{florBean.eliminar(f.id)}"
+                         process="@this"
+                         update=":mainForm:tblFlores"
+                         onclick="return confirm('¿Eliminar esta flor?');" />
+      </p:column>
+    </p:dataTable>
+
+    <p:dialog id="dlgFlor"
+              widgetVar="wvDlgFlor"
+              header="Flor"
+              modal="true"
+              appendTo="@(body)"
+              resizable="false">
+
+      <h:messages globalOnly="true" style="color:red" />
+
+      <p:panelGrid columns="2" style="width:100%; border-spacing:10px;">
+        <h:outputLabel for="txtNombre" value="Nombre:" />
+        <p:inputText id="txtNombre"
+                     value="#{florBean.seleccionada.nombre}"
+                     required="true" />
+
+        <h:outputLabel for="txtColor" value="Color:" />
+        <p:inputText id="txtColor"
+                     value="#{florBean.seleccionada.color}"
+                     required="true" />
+
+        <h:outputLabel for="txtPrecio" value="Precio:" />
+        <p:inputNumber id="txtPrecio"
+                       value="#{florBean.seleccionada.precio}"
+                       required="true" decimalSeparator="." />
+
+        <h:outputLabel for="txtStock" value="Stock:" />
+        <p:inputNumber id="txtStock"
+                       value="#{florBean.seleccionada.stock}"
+                       required="true" />
+      </p:panelGrid>
+
+      <f:facet name="footer">
+       <p:commandButton value="Guardar"
+                 action="#{florBean.guardar}"
+                 process="@form"
+                 update=":mainForm:tblFlores"
+                  resetValues="true"
+                 oncomplete="PF('wvDlgFlor').hide()" />
+
+        <p:commandButton value="Cancelar"
+                         type="button"
+                         onclick="PF('wvDlgFlor').hide()" />
+      </f:facet>
+    </p:dialog>
+  </ui:define>
+</ui:composition>

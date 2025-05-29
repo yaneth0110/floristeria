@@ -1,0 +1,52 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 28/05/2025, 6:55:40 p. m.
+    Author     : naily
+*/
+
+/* Tipografía & fondo */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Encabezado */
+.layout-header {
+  background: #4CAF50;
+  color: white;
+  padding: 1rem;
+}
+
+/* Menú */
+.layout-menu {
+  background: #eee;
+  padding: 0.5rem;
+}
+.layout-menu a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #4CAF50;
+}
+.layout-menu a:hover {
+  text-decoration: underline;
+}
+
+/* Contenido */
+.layout-content {
+  padding: 1rem;
+  background: white;
+  margin: 1rem;
+  border-radius: 4px;
+}
+
+/* Pie de página */
+.layout-footer {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  color: #777;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="jakarta.faces.html">
+  <ui:composition template="/resources/templates/template.xhtml">
+    <ui:define name="title">Inicio – Mi Floristería</ui:define>
+    <ui:define name="content">
+      <h2>¡Bienvenido a Mi Floristería!</h2>
+      <p>Utiliza el menú para navegar:</p>
+      <ul>
+        <li><h:link outcome="listado.xhtml" value="Clientes"/></li>
+        <li><h:link outcome="flores.xhtml"   value="Flores"/></li>
+        <li><h:link outcome="pedidos.xhtml"  value="Pedidos"/></li>
+        <li><h:link outcome="detalle.xhtml"  value="Detalle Pedidos"/></li>
+      </ul>
+    </ui:define>
+  </ui:composition>
+</html>
